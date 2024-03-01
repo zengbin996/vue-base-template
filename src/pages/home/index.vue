@@ -1,5 +1,6 @@
 <template>
   <div>
+    <base-header />
     <el-button @click="onClick">{{ $t('Home') }}</el-button>
   </div>
 </template>
@@ -11,5 +12,3 @@ const onClick = () => {
 
 console.log('import.meta', import.meta.env)
 </script>
-
-<style lang="scss" scoped></style>

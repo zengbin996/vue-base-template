@@ -39,6 +39,7 @@ export default defineConfig({
     }),
 
     Components({
+      dts: 'src/types/auto-components.d.ts',
       resolvers: [ElementPlusResolver()]
     })
   ],
