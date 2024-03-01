@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
-import zh_CN from './langs/zh-CN.json'
-import zn_TW from './langs/zh-TW.json'
-import en from './langs/en.json'
+import zh_CN from './Locale/zh-CN.json'
+import zn_TW from './Locale/zh-TW.json'
+import en from './Locale/en.json'
 
 const i18n = createI18n({
   legacy: false,
