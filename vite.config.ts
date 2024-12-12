@@ -1,20 +1,21 @@
-import dotenv from 'dotenv'
-const envConfig: any = dotenv.config({ path: `.env.${process.env.NODE_ENV}` }).parsed
+import dotenv from 'dotenv';
+const envConfig: any = dotenv.config({ path: `.env.${process.env.NODE_ENV}` }).parsed;
 
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { VantResolver } from '@vant/auto-import-resolver';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   plugins: [
     vue(),
@@ -27,21 +28,27 @@ export default defineConfig({
         'vue-i18n',
         {
           from: 'element-plus',
-          imports: ['ElMessage']
+          imports: ['ElMessage'],
         },
         {
           dayjs: [['default', 'dayjs']],
           axios: [['default', 'axios']],
-          lodash: [['default', '_']]
-        }
+          lodash: [['default', '_']],
+        },
       ],
-      resolvers: [ElementPlusResolver()]
+      resolvers: [
+        ElementPlusResolver(),
+        // VantResolver() //移动端vant-ui自动导入
+      ],
     }),
 
     Components({
       dts: 'src/types/auto-components.d.ts',
-      resolvers: [ElementPlusResolver()]
-    })
+      resolvers: [
+        ElementPlusResolver(),
+        // VantResolver() //移动端vant-ui自动导入
+      ],
+    }),
   ],
 
   server: {
@@ -50,8 +57,8 @@ export default defineConfig({
     proxy: {
       '/apis': {
         target: envConfig.BASE_URL,
-        changeOrigin: true
-      }
-    }
-  }
-})
+        changeOrigin: true,
+      },
+    },
+  },
+});
