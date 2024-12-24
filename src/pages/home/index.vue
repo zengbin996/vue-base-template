@@ -1,14 +1,17 @@
 <template>
+  <base-header />
   <div>
-    <base-header />
-    <el-button @click="onClick">{{ $t('Home') }}</el-button>
+    {{ commonStore.token }}
   </div>
+  <el-button @click="onClick">{{ $t('Home') }}</el-button>
 </template>
 
 <script setup lang="ts">
-const onClick = () => {
-  ElMessage('this is a message.')
-}
+import { useCommonStore } from '@/stores';
+const commonStore = useCommonStore();
 
-console.log('import.meta', import.meta.env)
+const onClick = () => {
+  ElMessage('this is a message.');
+  commonStore.token = '更新token';
+};
 </script>

@@ -1,4 +1,4 @@
-import i18n from '../i18n'
+import i18n from '../i18n';
 
 export const routes = [
   {
@@ -6,7 +6,7 @@ export const routes = [
     path: '/',
     component: () => import('../pages/home/index.vue'),
     meta: {
-      title: i18n.global.t('Home')
-    }
-  }
-]
+      title: i18n.global.t('Home'),
+    },
+  },
+];

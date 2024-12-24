@@ -1,25 +1,25 @@
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
-import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from './routes'
+import { createRouter, createWebHistory } from 'vue-router';
+import { routes } from './routes';
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
 router.beforeEach((to) => {
   if (false) {
-    return '/login'
+    return '/login';
   }
 
-  window.scrollTo(0, 0)
-  NProgress.start()
-})
+  window.scrollTo(0, 0);
+  NProgress.start();
+});
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
-export default router
+export default router;
